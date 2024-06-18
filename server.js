@@ -4,6 +4,9 @@ const port = process.env.PORT || 8000;
 const app = express();
 import posts from "./routes/posts.js";
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // app.use(express.static(path.join(__dirname, "public"))); // makes a static folder.
 
 app.listen(port, () => console.log("Server is running on port", port));
