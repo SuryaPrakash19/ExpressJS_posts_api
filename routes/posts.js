@@ -52,4 +52,14 @@ router.put("/:id", (req, res) => {
   return res.status(201).json(posts);
 });
 
+router.delete("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const post = posts.find((p) => p.id === id);
+  if (!post) {
+    return res.status(404).json({ msg: `ID: ${id} not found.` });
+  }
+  posts = posts.filter((p) => p.id !== id);
+  return res.status(201).json(posts);
+});
+
 export default router;
